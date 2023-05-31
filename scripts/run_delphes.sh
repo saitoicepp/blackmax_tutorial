@@ -25,7 +25,17 @@ if [ -e "${OUTDIR}/${OUTPUT_ROOTFILE}" ]; then
   exit
 fi
 
+# Create working directory
+if [ ! -d "${TMPDIR}" ]; then
+  mkdir -p "${TMPDIR}"
+  echo "Created temporary directory (${TMPDIR})."
+fi
 wdir=$(mktemp -d)
+ret=$?
+if [ ${ret} -ne 0 ]; then
+  echo "mktemp failed. Please check tmp directory."
+  exit
+fi
 cd "${wdir}" || exit
 
 # shellcheck disable=SC1090
