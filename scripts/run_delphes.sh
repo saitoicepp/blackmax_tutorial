@@ -26,6 +26,7 @@ if [ -e "${OUTDIR}/${OUTPUT_ROOTFILE}" ]; then
 fi
 
 # Create working directory
+TMPDIR=${TMPDIR:-/tmp}
 if [ ! -d "${TMPDIR}" ]; then
   mkdir -p "${TMPDIR}"
   echo "Created temporary directory (${TMPDIR})."
