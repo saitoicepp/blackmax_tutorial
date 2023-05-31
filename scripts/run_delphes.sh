@@ -8,6 +8,7 @@ NEVENTS=10000
 
 # Variable signal parameters
 INPUT_LHEFILE="${1:-BlackMaxLHArecord.lhe}"
+INPUT_LHEFILE=$(readlink -f "${INPUT_LHEFILE}")
 if [ ! -f "${INPUT_LHEFILE}" ]; then
   echo "Input LHE file does not exists. INPUT_LHEFILE:${INPUT_LHEFILE}"
   exit
